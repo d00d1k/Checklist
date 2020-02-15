@@ -42,7 +42,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
-    
+        
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let oldText = textField.text! as NSString
