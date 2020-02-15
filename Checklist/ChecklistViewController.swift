@@ -8,7 +8,23 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+    
+    func addItemViewControllerDidChange(_ controller: AddItemViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        
+        let newRowIndex = items.count
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     var items: [ChecklistItem]
     
@@ -88,6 +104,24 @@ class ChecklistViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        items.remove(at: indexPath.row)
+        
+        let indexPaths = [indexPath]
+        
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let navigationController = segue.destination as! UINavigationController
+            
+            let controller = navigationController.topViewController as! AddItemViewController
+            
+            controller.delegate = self
+        }
+    }
+    
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
                 
         if item.checked {
@@ -102,6 +136,22 @@ class ChecklistViewController: UITableViewController {
         
         label.text = item.text
     }
+    
+    @IBAction func addItem(){
+        let newRowIndex = items.count
+        
+        let item = ChecklistItem()
+        item.text = "I'm a new row"
+        item.checked = false
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        
+        let indexPaths = [indexPath]
+        
+        tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
     
 
     
