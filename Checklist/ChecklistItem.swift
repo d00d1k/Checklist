@@ -8,7 +8,8 @@
 
 import Foundation
 
-class ChecklistItem: NSObject, NSCoding {
+class ChecklistItem: NSObject, NSCoding
+{
     
     func encode(with aDecoder: NSCoder) {
         aDecoder.encode(text, forKey: "Text")

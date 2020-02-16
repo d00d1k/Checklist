@@ -15,7 +15,8 @@ protocol ItemDetailViewControllerDelegate: class {
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem)
 }
 
-class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate
+{
     
     weak var delegate: ItemDetailViewControllerDelegate?
     
