@@ -10,7 +10,6 @@ import Foundation
 
 class ChecklistItem: NSObject, NSCoding
 {
-    
     func encode(with aDecoder: NSCoder) {
         aDecoder.encode(text, forKey: "Text")
         aDecoder.encode(checked, forKey: "Checked")
