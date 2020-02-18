@@ -109,7 +109,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.itemToEdit = items[indexPath.row]
+                controller.itemToEdit = checklist.items[indexPath.row]
             }
         }
     }

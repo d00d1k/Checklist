@@ -32,5 +32,4 @@ class ChecklistItem: NSObject, NSCoding
     func toggleChecked() {
         checked = !checked
     }
-    
 }

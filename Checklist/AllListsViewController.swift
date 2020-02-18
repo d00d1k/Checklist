@@ -21,23 +21,28 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist) {
-        let newRowIndex = dataModel.lists.count
+        //        let newRowIndex = dataModel.lists.count
         dataModel.lists.append(checklist)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
+        dataModel.sortChecklists()
+        if let index = dataModel.lists.firstIndex(of: checklist) {
+            let indexPath = IndexPath(row: index, section: 0)
+            let indexPaths = [indexPath]
+            tableView.insertRows(at: indexPaths, with: .automatic)
+        }
         
         dismiss(animated: true, completion: nil)
     }
     
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist) {
-        if let index = dataModel.lists.firstIndex(of: checklist) {
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.textLabel!.text = checklist.name
-            }
-        }
+        
+//        if let index = dataModel.lists.firstIndex(of: checklist) {
+//            let indexPath = IndexPath(row: index, section: 0)
+//            if let cell = tableView.cellForRow(at: indexPath) {
+//                cell.textLabel!.text = checklist.name
+//            }
+//        }
+        dataModel.sortChecklists()
+        tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
     
@@ -47,8 +52,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         navigationController?.delegate = self
         
@@ -57,6 +62,11 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
             let checklist = dataModel.lists[index]
             performSegue(withIdentifier: "ShowChecklist", sender: checklist)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -85,6 +95,17 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .detailDisclosureButton
         
+        let totalItems = checklist.items.count
+        let remainingItems = checklist.countUncheckedItems()
+        
+        if totalItems == 0 {
+            cell.detailTextLabel!.text = "(No Items)"
+        } else if remainingItems == 0 {
+            cell.detailTextLabel!.text = "Done!"
+        } else {
+            cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
+        }
+        cell.imageView!.image = UIImage(named: checklist.iconName)
         return cell
     }
     
@@ -120,7 +141,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             return cell
         } else {
-            return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+            return UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
     }
 }
