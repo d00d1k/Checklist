@@ -29,7 +29,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIT-te-SYc">
-                                            <rect key="frame" x="35" y="4" width="41.666666666666657" height="37"/>
+                                            <rect key="frame" x="35" y="4" width="42" height="37"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="37" id="Lrz-Mr-neV"/>
                                             </constraints>
@@ -87,9 +87,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q7X-wA-Q8Z">
-                                                    <rect key="frame" x="20" y="1" width="374" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q7X-wA-Q8Z">
+                                                    <rect key="frame" x="20" y="7" width="374" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="374" id="Gkw-u3-YF6"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
@@ -98,6 +100,11 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Q7X-wA-Q8Z" firstAttribute="top" secondItem="JcG-NI-kFm" secondAttribute="top" constant="7" id="Jok-ny-Mld"/>
+                                                <constraint firstItem="Q7X-wA-Q8Z" firstAttribute="leading" secondItem="JcG-NI-kFm" secondAttribute="leading" constant="20" id="eZs-Fm-U9F"/>
+                                                <constraint firstAttribute="trailing" secondItem="Q7X-wA-Q8Z" secondAttribute="trailing" constant="20" id="yVg-GC-FR4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -111,18 +118,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-ih-bEA">
-                                                    <rect key="frame" x="20" y="11" width="80" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-ih-bEA">
+                                                    <rect key="frame" x="22.999999999999996" y="14.000000000000002" width="32.666666666666657" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GqP-Zf-CLl">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GqP-Zf-CLl">
                                                     <rect key="frame" x="339" y="4" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="9p1-Zg-l68"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="AX6-2g-m4D"/>
+                                                        <constraint firstAttribute="height" constant="36" id="JDp-xF-qsT"/>
+                                                        <constraint firstAttribute="width" constant="36" id="Q0z-Km-M83"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SHa-ih-bEA" firstAttribute="top" secondItem="5KT-8V-8Y8" secondAttribute="top" constant="14" id="3ul-7k-hLr"/>
+                                                <constraint firstItem="SHa-ih-bEA" firstAttribute="leading" secondItem="5KT-8V-8Y8" secondAttribute="leading" constant="23" id="6P9-4q-wzh"/>
+                                                <constraint firstAttribute="trailing" secondItem="GqP-Zf-CLl" secondAttribute="trailing" constant="8" id="GdJ-1c-nsP"/>
+                                                <constraint firstAttribute="trailing" secondItem="GqP-Zf-CLl" secondAttribute="trailing" constant="8" id="Kai-eI-oBZ"/>
+                                                <constraint firstItem="GqP-Zf-CLl" firstAttribute="top" secondItem="5KT-8V-8Y8" secondAttribute="top" constant="4" id="amf-dt-ovZ"/>
+                                                <constraint firstItem="GqP-Zf-CLl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SHa-ih-bEA" secondAttribute="trailing" constant="8" symbolic="YES" id="bNR-lN-W2Y"/>
+                                                <constraint firstItem="GqP-Zf-CLl" firstAttribute="top" secondItem="5KT-8V-8Y8" secondAttribute="top" constant="4" id="ox5-4R-0Pf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="NCQ-Yn-BAc" kind="show" identifier="PickIcon" id="aLA-n0-PCA"/>
@@ -230,9 +250,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the item" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRs-HY-dka">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the item" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRs-HY-dka">
+                                                    <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="374" id="EY7-gx-DVQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
@@ -241,6 +263,11 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tRs-HY-dka" firstAttribute="centerY" secondItem="iGf-q4-Jfd" secondAttribute="centerY" id="4xj-kT-hjt"/>
+                                                <constraint firstAttribute="trailing" secondItem="tRs-HY-dka" secondAttribute="trailing" constant="20" id="FMt-qK-ZnM"/>
+                                                <constraint firstItem="tRs-HY-dka" firstAttribute="leading" secondItem="iGf-q4-Jfd" secondAttribute="leading" constant="20" id="eWv-00-Fux"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -254,22 +281,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remind Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0o-BY-22c">
-                                                    <rect key="frame" x="20" y="11" width="86" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NtX-zw-I6p">
                                                     <rect key="frame" x="345" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="shouldRemindToggled:" destination="TJD-vI-nJc" eventType="valueChanged" id="dUY-sZ-cs3"/>
                                                     </connections>
                                                 </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0o-BY-22c">
+                                                    <rect key="frame" x="20" y="11" width="86" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="NtX-zw-I6p" firstAttribute="leading" secondItem="j0o-BY-22c" secondAttribute="trailing" priority="750" constant="239" id="MjI-NS-eNl"/>
                                                 <constraint firstItem="NtX-zw-I6p" firstAttribute="top" secondItem="Si0-1d-3HU" secondAttribute="top" constant="6" id="TtM-hQ-9gz"/>
+                                                <constraint firstItem="j0o-BY-22c" firstAttribute="top" secondItem="Si0-1d-3HU" secondAttribute="top" constant="11" id="cpQ-Po-9Vh"/>
+                                                <constraint firstItem="j0o-BY-22c" firstAttribute="leading" secondItem="Si0-1d-3HU" secondAttribute="leading" constant="20" id="hZX-jG-da6"/>
                                                 <constraint firstAttribute="trailing" secondItem="NtX-zw-I6p" secondAttribute="trailing" constant="20" id="teo-XA-L6O"/>
                                             </constraints>
                                         </tableViewCellContentView>
