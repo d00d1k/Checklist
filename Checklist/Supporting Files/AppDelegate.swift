@@ -7,22 +7,38 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
-
-//    var window: UIWindow?
-//    let scene = SceneDelegate()
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        let center = UNUserNotificationCenter.current()
+//        center.requestAuthorization(options: [.alert, .sound]) {
+//            granted, error in if granted {
+//                print("We have permission")
+//            } else {
+//                print("Permission denied")
+//            }
+//        }
+//        let content = UNMutableNotificationContent()
+//        content.title = "Hello!"
+//        content.body = "I am a local notification"
+//        content.sound = UNNotificationSound.default
+//
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+//
+//        let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
+//        center.add(request)
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
         return true
     }
 
@@ -35,9 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler competionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("received local notication \(notification)")
     }
 }
 
